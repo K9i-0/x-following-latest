@@ -1,0 +1,44 @@
+X Following Latest - Show your timeline the way you want!
+
+Tired of the "For You" algorithm showing you posts you didn't ask for? This extension automatically switches X.com (Twitter) to show your "Following" timeline sorted by "Latest" posts.
+
+FEATURES:
+- Hides the "For You" tab automatically
+- Defaults to "Following" tab
+- Sorts timeline by "Latest" instead of "Popular"
+- Works seamlessly in the background
+- No configuration needed
+
+PRIVACY:
+- Zero data collection
+- No analytics or tracking
+- All processing happens locally in your browser
+- Open source
+
+SUPPORTED LANGUAGES:
+- Japanese (日本語)
+- English
+- Spanish (Español)
+- French (Français)
+- Portuguese (Português)
+
+This extension respects your privacy and operates entirely within your browser. No data is ever sent to external servers.
+
+---
+
+X Following Latest - タイムラインを思い通りに！
+
+「おすすめ」アルゴリズムに表示される興味のない投稿にうんざりしていませんか？この拡張機能は、X.com（Twitter）を自動的に「フォロー中」タイムラインの「最新」順で表示します。
+
+機能：
+- 「おすすめ」タブを自動的に非表示
+- 「フォロー中」タブをデフォルトに
+- 「人気」ではなく「最新」順で表示
+- バックグラウンドでシームレスに動作
+- 設定不要
+
+プライバシー：
+- データ収集ゼロ
+- 分析やトラッキングなし
+- すべての処理はブラウザ内でローカルに実行
+- オープンソース
