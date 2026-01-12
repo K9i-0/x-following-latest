@@ -44,6 +44,51 @@
 
 	let isProcessing = false;
 	let latestSortSelected = false;
+	let dropdownHidden = false;
+
+	// フォロー中タブのドロップダウンを無効化し、クリックで最新読み込み
+	const setupFollowingTab = () => {
+		if (dropdownHidden) return;
+
+		const { following } = getLabels();
+		const tabs = document.querySelectorAll('div[role="tab"]');
+
+		for (const tab of tabs) {
+			const text = tab.textContent.trim();
+			if (text.toLowerCase().includes(following.toLowerCase())) {
+				// ドロップダウン矢印（SVG）を非表示
+				const svg = tab.querySelector('svg');
+				if (svg) {
+					svg.style.display = 'none';
+				}
+				// ドロップダウン機能を無効化
+				tab.removeAttribute('aria-haspopup');
+
+				// クリックイベントを設定（ドロップダウン防止 + 最新読み込み）
+				if (!tab.dataset.customClickAdded) {
+					tab.dataset.customClickAdded = 'true';
+
+					// capture phaseでドロップダウンを防ぐ
+					tab.addEventListener('click', (e) => {
+						e.stopPropagation();
+						e.preventDefault();
+
+						// 最新ツイートを読み込む
+						const showPostsButton = document.querySelector('[data-testid="cellInnerDiv"] button');
+						if (showPostsButton && showPostsButton.textContent.includes('件')) {
+							showPostsButton.click();
+						} else {
+							// なければタイムラインの一番上にスクロール
+							window.scrollTo({ top: 0, behavior: 'smooth' });
+						}
+					}, true);
+				}
+
+				dropdownHidden = true;
+				break;
+			}
+		}
+	};
 
 	const removeForYouAndSelectFollowing = () => {
 		if (isProcessing) return;
@@ -134,7 +179,11 @@
 			document.querySelectorAll('div[role="tab"]').length > 0;
 		if (tabsExist) {
 			removeForYouAndSelectFollowing();
-			setTimeout(clickSortDropdown, 500);
+			setTimeout(() => {
+				clickSortDropdown();
+				// 最新選択後にタブをセットアップ
+				setTimeout(setupFollowingTab, 300);
+			}, 500);
 		} else {
 			setTimeout(waitForTabs, 500);
 		}
@@ -150,6 +199,7 @@
 			if (!latestSortSelected) {
 				clickSortDropdown();
 			}
+			setupFollowingTab();
 		}, 100);
 	});
 

@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "X Following Latest",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "X.comで「フォロー中」タブをデフォルトにし、最新順で表示します",
 	"permissions": [],
 	"content_scripts": [
