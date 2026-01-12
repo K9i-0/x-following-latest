@@ -1,4 +1,4 @@
-X Following Latest - Show your timeline the way you want!
+Bye Bye For You - X: Show your timeline the way you want!
 
 Tired of the "For You" algorithm showing you posts you didn't ask for? This extension automatically switches X.com (Twitter) to show your "Following" timeline sorted by "Latest" posts.
 
@@ -26,7 +26,7 @@ This extension respects your privacy and operates entirely within your browser. 
 
 ---
 
-X Following Latest - タイムラインを思い通りに！
+Bye Bye For You - X: タイムラインを思い通りに！
 
 「おすすめ」アルゴリズムに表示される興味のない投稿にうんざりしていませんか？この拡張機能は、X.com（Twitter）を自動的に「フォロー中」タイムラインの「最新」順で表示します。
 
