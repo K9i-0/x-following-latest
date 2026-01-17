@@ -1,0 +1,9 @@
+{
+  "name": "bye-bye-for-you-x",
+  "version": "1.1.0",
+  "private": true,
+  "scripts": {
+    "dev:name": "node scripts/set-name.js dev",
+    "prod:name": "node scripts/set-name.js prod"
+  }
+}

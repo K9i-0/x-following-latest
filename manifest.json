@@ -1,13 +1,18 @@
 {
 	"manifest_version": 3,
-	"name": "Bye Bye For You - X",
+	"name": "[Dev] Bye Bye For You - X",
 	"version": "1.1.0",
 	"description": "X.comで「フォロー中」タブをデフォルトにし、最新順で表示します",
 	"permissions": [],
 	"content_scripts": [
 		{
-			"matches": ["*://twitter.com/*", "*://x.com/*"],
-			"js": ["content.js"],
+			"matches": [
+				"*://twitter.com/*",
+				"*://x.com/*"
+			],
+			"js": [
+				"content.js"
+			],
 			"run_at": "document_idle"
 		}
 	],
