@@ -1,0 +1,4 @@
+/* フォロー中タブのドロップダウン矢印を事前に非表示にしてチラつきを防ぐ */
+div[role="tab"][aria-haspopup="menu"] svg {
+	display: none !important;
+}

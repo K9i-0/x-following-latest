@@ -46,6 +46,20 @@
 	let latestSortSelected = false;
 	let dropdownHidden = false;
 
+	// ドロップダウン矢印を即座に非表示にするスタイルを注入
+	const injectHideDropdownStyle = () => {
+		const styleId = 'hide-dropdown-style';
+		if (document.getElementById(styleId)) return;
+
+		const style = document.createElement('style');
+		style.id = styleId;
+		style.textContent = 'div[role="tab"][aria-haspopup="menu"] svg { display: none !important; }';
+		document.head.appendChild(style);
+	};
+
+	// 初期化時にスタイルを注入
+	injectHideDropdownStyle();
+
 	// フォロー中タブのドロップダウンを無効化し、クリックで最新読み込み
 	const setupFollowingTab = () => {
 		const { following } = getLabels();
@@ -193,6 +207,9 @@
 
 	let debounceTimer = null;
 	const observer = new MutationObserver(() => {
+		// 即座にドロップダウンを非表示（チラつき防止）
+		setupFollowingTab();
+
 		if (debounceTimer) clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
 			removeForYouAndSelectFollowing();
@@ -211,6 +228,10 @@
 	window.addEventListener('popstate', () => {
 		latestSortSelected = false;
 		dropdownHidden = false;
+		// 即座にスタイルを再注入（念のため）
+		injectHideDropdownStyle();
+		// 即座にセットアップを試みる
+		setupFollowingTab();
 		setTimeout(() => {
 			removeForYouAndSelectFollowing();
 			clickSortDropdown();

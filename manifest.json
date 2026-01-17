@@ -10,6 +10,9 @@
 				"*://twitter.com/*",
 				"*://x.com/*"
 			],
+			"css": [
+				"content.css"
+			],
 			"js": [
 				"content.js"
 			],
