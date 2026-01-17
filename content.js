@@ -48,21 +48,21 @@
 
 	// フォロー中タブのドロップダウンを無効化し、クリックで最新読み込み
 	const setupFollowingTab = () => {
-		if (dropdownHidden) return;
-
 		const { following } = getLabels();
 		const tabs = document.querySelectorAll('div[role="tab"]');
 
 		for (const tab of tabs) {
 			const text = tab.textContent.trim();
 			if (text.toLowerCase().includes(following.toLowerCase())) {
-				// ドロップダウン矢印（SVG）を非表示
+				// ドロップダウン矢印（SVG）を非表示（DOMの状態を直接チェック）
 				const svg = tab.querySelector('svg');
-				if (svg) {
+				if (svg && svg.style.display !== 'none') {
 					svg.style.display = 'none';
 				}
 				// ドロップダウン機能を無効化
-				tab.removeAttribute('aria-haspopup');
+				if (tab.getAttribute('aria-haspopup')) {
+					tab.removeAttribute('aria-haspopup');
+				}
 
 				// クリックイベントを設定（ドロップダウン防止 + 最新読み込み）
 				if (!tab.dataset.customClickAdded) {
@@ -210,9 +210,11 @@
 
 	window.addEventListener('popstate', () => {
 		latestSortSelected = false;
+		dropdownHidden = false;
 		setTimeout(() => {
 			removeForYouAndSelectFollowing();
 			clickSortDropdown();
+			setupFollowingTab();
 		}, 500);
 	});
 })();
